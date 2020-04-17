@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import RemoveArtist from '../buttons/RemoveArtist'
 import UpdateArtist from '../forms/UpdateArtist'
 import DisplayCard from '../cards/DisplayCard'
+import Instruments from '../lists/Instruments'
 
 const useStyles = makeStyles({
   label: {
@@ -22,9 +23,15 @@ const Artist = (props) => {
   const [firstName, setFirstName] = useState(props.firstName)
   const [lastName, setLastName] = useState(props.lastName)
   const [editMode, setEditMode] = useState(false)
+  const [showInstruments, setShowInstruments] = useState(false)
 
   const handleButtonClick = () => {
     setEditMode(!editMode)
+  }
+
+  const handleShowInstruments = () => {
+      console.log(showInstruments)
+      setShowInstruments(!showInstruments)
   }
 
   const fullName = () => {
@@ -69,8 +76,13 @@ const Artist = (props) => {
             lastName={props.lastName}
           />
         </ListItem>
+        <Instruments />
         <CardActions>
-          <Button color='primary' size='small' variant='outlined'>
+          <Button 
+            onClick={() => setShowInstruments(true)}
+            color='primary' 
+            size='small' 
+            variant='outlined'>
             Learn More
           </Button>
         </CardActions>

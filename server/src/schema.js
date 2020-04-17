@@ -101,8 +101,18 @@ const typeDefs = gql`
     lastName: String!
   }
 
+  type Instrument {
+    id: String!
+    year: String!
+    brand: String!
+    type: String!
+    price: String!
+    artistId: String!
+  }
+
   type Query {
     artists: [Artist]
+    instruments: [Instrument]
   }
 
   type Mutation {
@@ -114,7 +124,8 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    artists: () => artists
+    artists: () => artists,
+    instruments: () => instruments
   },
   Mutation: {
     addArtist: (root, args) => {
